@@ -6,18 +6,17 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      robots: [
-        {
-          name: 'Robby',
-          id: 1
-        },
-        {
-          name: 'Timmy',
-          id: 2
-        }
-      ]
+      robots: []
     }
   }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => this.setState({ robots: json }))
+  }
+
+
   render() {
     return (
       <div className="App">
