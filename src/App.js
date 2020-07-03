@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './App.css';
+import { CardList } from './components/card-list/card-list.component';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +21,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.robots.map(robot => <h1 key={robot.id}>{robot.name}</h1>)}
+        <CardList robots={this.state.robots} />
       </div>
     );
   }
