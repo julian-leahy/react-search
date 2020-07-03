@@ -1,0 +1,12 @@
+.card{
+    width: 180px;
+    padding: 0 20px;
+    margin: 10px;
+    background: cadetblue;
+    border-radius: 15px;
+}
+
+
+.card h3{
+    text-align: center;
+}
