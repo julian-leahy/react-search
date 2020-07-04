@@ -2,12 +2,14 @@ import React from 'react';
 
 import './App.css';
 import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search/search.component';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      robots: []
+      robots: [],
+      searchTerm: ''
     }
   }
 
@@ -17,11 +19,19 @@ class App extends React.Component {
       .then(json => this.setState({ robots: json }))
   }
 
+  handleChange = e => {
+    this.setState({ searchTerm: e.target.value })
+  }
+
 
   render() {
+    const filteredRobots = this.state.robots.filter(robot => {
+      return robot.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
     return (
       <div className="App">
-        <CardList robots={this.state.robots} />
+        <SearchBox placeholder='Search Robots' handleChange={this.handleChange} />
+        <CardList robots={filteredRobots} />
       </div>
     );
   }
