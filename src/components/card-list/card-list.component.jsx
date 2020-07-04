@@ -6,7 +6,7 @@ import './card-list.style.css';
 export const CardList = (props) => {
     return (
         <div className='card-container'>
-            {props.robots.map(robot => <Card key={robot.id} name={robot.name} id={robot.id} />)}
+            {props.robots.map(({ id, name }) => <Card key={id} name={name} id={id} />)}
         </div>
     )
 }
